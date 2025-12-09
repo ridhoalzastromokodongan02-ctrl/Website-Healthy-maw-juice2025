@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tambah Produk Baru</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Tambah Produk Baru</h1>
+    <a href="admin.html" class="btn">🔙 Kembali</a>
+  </header>
+
+  <main>
+    <form id="addForm">
+      <label>Nama Produk:</label>
+      <input type="text" name="nama_produk" required>
+
+      <label>Bahan Utama:</label>
+      <textarea name="bahan_utama" rows="3" required></textarea>
+
+      <label>Manfaat Kesehatan:</label>
+      <textarea name="manfaat_kesehatan" rows="3"></textarea>
+
+      <label>Harga (Rp):</label>
+      <input type="number" name="harga" min="0" required>
+
+      <button type="submit" class="btn">Simpan Produk</button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // proteksi sederhana
+    if (!isLoggedIn()) window.location.href = 'login.html';
+
+    document.getElementById('addForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var f = e.target;
+      var prod = {
+        nama_produk: f.nama_produk.value.trim(),
+        bahan_utama: f.bahan_utama.value.trim(),
+        manfaat_kesehatan: f.manfaat_kesehatan.value.trim(),
+        harga: parseFloat(f.harga.value) || 0
+      };
+      addProduct(prod);
+      window.location.href = 'admin.html';
+    });
+  </script>
+</body>
+</html>

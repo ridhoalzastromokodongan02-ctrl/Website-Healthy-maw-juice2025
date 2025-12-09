@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login Admin - Healthy Maw Juice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Healthy Maw Juice 🍊</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="login-page" role="main" aria-labelledby="login-heading">
+      <div class="login-container" aria-live="polite">
+        <h2 id="login-heading">Login Admin Healthy Maw Juice</h2>
+
+        <div id="loginError" class="error" role="alert" style="display:none;color:#c00;margin-bottom:12px;"></div>
+
+        <form id="loginForm" autocomplete="off" novalidate>
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" required autofocus />
+
+          <label for="password">Password</label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input id="password" name="password" type="password" required style="flex:1;" />
+            <button type="button" class="show-pass" id="togglePass" aria-pressed="false" title="Tampilkan password">Tampilkan</button>
+          </div>
+
+          <button type="submit" class="btn" style="margin-top:14px;">Masuk</button>
+        </form>
+
+        <p class="small-note">
+          (Demo) gunakan username: <strong>admin</strong> password: <strong>admin</strong>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Healthy Maw Juice. Semua hak cipta dilindungi.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function(){
+      var btn = document.getElementById('togglePass');
+      var pw  = document.getElementById('password');
+      btn.addEventListener('click', function(){
+        if (pw.type === 'password') { pw.type = 'text'; btn.textContent = 'Sembunyikan'; btn.setAttribute('aria-pressed','true'); }
+        else { pw.type = 'password'; btn.textContent = 'Tampilkan'; btn.setAttribute('aria-pressed','false'); }
+        pw.focus();
+      });
+
+      document.getElementById('loginForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var user = document.getElementById('username').value.trim();
+        var pass = document.getElementById('password').value;
+        // demo credential
+        if (user === 'admin' && pass === 'admin') {
+          login(); // set flag
+          window.location.href = 'admin.html';
+        } else {
+          var err = document.getElementById('loginError');
+          err.textContent = 'Username atau Password salah.';
+          err.style.display = 'block';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Produk Kami - Healthy Maw Juice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Healthy Maw Juice 🍊</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="products.html">Produk Kami</a></li>
+        <li><a href="admin.html">Admin (CRUD)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="product-list">
+      <h2>Pilihan Healthy Maw Juice Terbaik</h2>
+      <div class="product-container" id="productContainer">
+        <!-- Produk akan dirender oleh JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year2"></span> Healthy Maw Juice. Semua hak cipta dilindungi.</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>document.getElementById('year2').textContent = new Date().getFullYear(); renderProductsPublic();</script>
+</body>
+</html>

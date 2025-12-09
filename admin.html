@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Kelola Produk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Admin - Kelola Produk Jus</h1>
+    <nav>
+      <a href="index.html" class="btn-sm view">Beranda</a>
+      <button id="btnTambah" class="btn">+ Tambah Produk</button>
+      <button id="btnLogout" class="btn-sm delete" style="display:none">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="adminArea" style="display:none">
+      <table id="adminTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama Produk</th>
+            <th>Bahan Utama</th>
+            <th>Manfaat Kesehatan</th>
+            <th>Harga (Rp)</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="adminTbody"></tbody>
+      </table>
+    </div>
+
+    <div id="loginArea">
+      <h2>Login Admin</h2>
+      <form id="loginForm" onsubmit="return false;">
+        <label for="adminUser">Username</label>
+        <input id="adminUser" value="admin" />
+        <label for="adminPass">Password</label>
+        <input id="adminPass" type="password" />
+        <button id="loginBtn" class="btn" type="button">Masuk</button>
+        <p class="small-note">Password default demo: <strong>admin123</strong></p>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal/Form Tambah/Edit -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h3 id="modalTitle">Tambah Produk</h3>
+      <form id="productForm" onsubmit="return false;">
+        <input type="hidden" id="productId" />
+        <label>Nama Produk:</label>
+        <input id="pNama" required />
+        <label>Bahan Utama:</label>
+        <textarea id="pBahan" rows="3" required></textarea>
+        <label>Manfaat Kesehatan:</label>
+        <textarea id="pManfaat" rows="3"></textarea>
+        <label>Harga (Rp):</label>
+        <input id="pHarga" type="number" min="0" required />
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <button id="saveBtn" class="btn">Simpan</button>
+          <button id="cancelBtn" class="btn-sm" type="button">Batal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Inisialisasi admin UI
+    initAdminPage();
+  </script>
+</body>
+</html>

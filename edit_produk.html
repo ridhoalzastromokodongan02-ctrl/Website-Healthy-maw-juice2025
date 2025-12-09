@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Edit Produk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Edit Produk</h1>
+    <a href="admin.html" class="btn">🔙 Kembali</a>
+  </header>
+
+  <main>
+    <form id="editForm">
+      <input type="hidden" name="id">
+      <label>Nama Produk:</label>
+      <input type="text" name="nama_produk" required>
+
+      <label>Bahan Utama:</label>
+      <textarea name="bahan_utama" rows="3" required></textarea>
+
+      <label>Manfaat Kesehatan:</label>
+      <textarea name="manfaat_kesehatan" rows="3"></textarea>
+
+      <label>Harga (Rp):</label>
+      <input type="number" name="harga" min="0" required>
+
+      <button type="submit" class="btn">Simpan Perubahan</button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    if (!isLoggedIn()) window.location.href = 'login.html';
+
+    function qs(key) {
+      var params = new URLSearchParams(window.location.search);
+      return params.get(key);
+    }
+    var id = qs('id'); // expect numeric id
+    if (!id) {
+      alert('ID produk tidak ditemukan.');
+      window.location.href = 'admin.html';
+    }
+    var prod = getProductById(parseInt(id));
+    if (!prod) {
+      alert('Produk tidak ditemukan.');
+      window.location.href = 'admin.html';
+    }
+
+    var form = document.getElementById('editForm');
+    form.id.value = prod.id;
+    form.nama_produk.value = prod.nama_produk;
+    form.bahan_utama.value = prod.bahan_utama;
+    form.manfaat_kesehatan.value = prod.manfaat_kesehatan;
+    form.harga.value = prod.harga;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var p = {
+        id: parseInt(form.id.value),
+        nama_produk: form.nama_produk.value.trim(),
+        bahan_utama: form.bahan_utama.value.trim(),
+        manfaat_kesehatan: form.manfaat_kesehatan.value.trim(),
+        harga: parseFloat(form.harga.value)||0
+      };
+      updateProduct(p);
+      window.location.href = 'admin.html';
+    });
+  </script>
+</body>
+</html>

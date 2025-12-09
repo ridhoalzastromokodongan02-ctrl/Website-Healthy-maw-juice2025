@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Data Produk - Healthy Maw Juice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Healthy Maw Juice 🍊</div>
+    <nav>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="produk_kami.html">Produk Kami</a></li>
+        <li><a href="admin.html">Admin (CRUD)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="product-list">
+      <h2>Semua Produk</h2>
+      <div class="product-container" id="productListData"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Healthy Maw Juice. Semua hak cipta dilindungi.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script> renderProductCards('#productListData'); </script>
+</body>
+</html>
